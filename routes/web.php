@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [MainController::class, 'index'])->name('main');
+
+/**
+ * userpanel
+ */
+Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () {
+    Route::get('/', [UserController::class, 'index'])->name('user.panel');
+});
