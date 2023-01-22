@@ -71,7 +71,7 @@ section{
     border:var(--border);
 }
 
-.btn{
+.BTN{
     margin-top: 1rem;
     display:inline-block;
     padding:.9rem 3rem;
@@ -83,7 +83,7 @@ section{
     font-weight: 500;
 }
 
-.btn:hover{
+.BTN:hover{
     background:var(--dark-color);
 }
 

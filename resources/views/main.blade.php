@@ -10,7 +10,7 @@
         <div class="content">
             <h3>کتاب بازی</h3>
             <p>شما در کتاب بازی میتوانید کتاب های خود که بصورت فایل هستند را با بقیه به اشتراک بگذارید و از کتاب های بقیه نیز استفاده کنید</p>
-            <a href="#" class="btn">اکنون رزرو کنید</a>
+            <a href="#" class="BTN">اکنون رزرو کنید</a>
         </div>
 
         <div class="swiper books-slider">
@@ -53,7 +53,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -85,7 +85,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -117,7 +117,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -133,7 +133,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -149,7 +149,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -165,7 +165,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -181,7 +181,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 
@@ -197,7 +197,7 @@
                 <div class="content">
                     <h3>کتاب برجسته</h3>
                     <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="btn">اضافه کردن به سبد خرید</a>
+                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
                 </div>
             </div>
 

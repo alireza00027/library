@@ -1,6 +1,6 @@
 <!-- footer section starts  -->
 
-<section class="footer">
+<section class="footer container">
 
     <div class="box-container">
 
