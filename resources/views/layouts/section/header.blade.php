@@ -19,7 +19,7 @@
 <div class="header-2">
     <nav class="navbar">
         <a href="#home">خانه</a>
-        <a href="#featured">ویژه</a>
+        <a href="{{route('books.add')}}">افزودن کتاب</a>
         <a href="#arrivals">جدیدها</a>
         <a href="#reviews">نظرات</a>
         <a href="#blogs">وبلاگ</a>

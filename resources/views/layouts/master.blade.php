@@ -43,6 +43,7 @@
 <!-- login form  -->
 
 @include('layouts.section.loginForm')
+@include('layouts.section.errors')
 
 @yield('content')
 
