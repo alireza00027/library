@@ -21,4 +21,26 @@ class Book extends Model {
             return $url;
         }
     }
+
+    /**
+     * gate category title text
+     */
+    public function getCategoryTitle() {
+        return $this->category->title;
+    }
+
+
+    /**
+     * reservations relation
+     */
+    public function reservations() {
+        return $this->hasMany(Reservation::class, 'book_id');
+    }
+
+    /**
+     * category relation
+     */
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }
