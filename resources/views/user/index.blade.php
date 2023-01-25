@@ -4,28 +4,37 @@
 @endsection
 
 @section('content')
-<section class="row">
-    <div class="col-md-12">
-        <form action="" class="form-control">
-            <div class="row">
-                <a href="{{route('books.add')}}" class="btn btn-lg btn-info">افزودن کتاب</a>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="from-group">
-                        <label for="name">نام کاربری :</label>
-                        <input type="text" id="name" class="form-control" value="{{auth()->user()->name}}">
+<section class="featured" id="featured">
+
+    <h1 class="heading"> <span>اطلاعات شخصی</span> </h1>
+
+    <div class="featured-slider">
+
+        <div class="col-md-12">
+            <form action="{{route('user.update',['user'=>auth()->user()->id])}}" method="POST" class="form-control">
+                @csrf
+                <div class="row">
+                    <a href="{{route('books.add')}}" class="btn btn-lg btn-info">افزودن کتاب</a>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="from-group">
+                            <label for="name">نام کاربری :</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{auth()->user()->name}}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="from-group">
+                            <label for="email">ایمیل :</label>
+                            <input type="text" id="email" class="form-control" value="{{auth()->user()->email}}" disabled>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="from-group">
-                        <label for="email">ایمیل :</label>
-                        <input type="text" id="email" class="form-control" value="{{auth()->user()->email}}">
-                    </div>
-                </div>
-            </div>
-        </form>
+                <button class="BTN" type="submit">ویرایش</button>
+            </form>
+        </div>
     </div>
+
 </section>
 <section class="featured">
 

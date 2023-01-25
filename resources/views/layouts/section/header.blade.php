@@ -9,9 +9,16 @@
 
     <div class="icons">
         <div id="search-btn" class="fas fa-search"></div>
-        <a href="#" class="fas fa-heart"></a>
-        <a href="#" class="fas fa-shopping-cart"></a>
-        <div id="login-btn" class="fas fa-user"></div>
+        @if (auth()->check())
+            <form action="{{route('logout')}}" method="POST">
+                @csrf
+                <button class="fa fa-user" type="submit"></button>
+                <a href="{{route('user.panel')}}" class="fas fa-user"></a>
+            </form>
+
+        @else
+        <a href="{{route('login')}}" class="fas fa-user"></a> 
+        @endif
     </div>
 
 </div>
@@ -22,7 +29,7 @@
         @foreach ($categories as $ca)
         <a href="{{route('books.list',['category'=>$ca->id])}}">{{$ca->title}}</a>
         @endforeach
-        <a href="{{route('books.add')}}">افزودن کتاب</a>
+        {{-- <a href="{{route('books.add')}}">افزودن کتاب</a> --}}
         {{-- <a href="#arrivals">جدیدها</a>
         <a href="#reviews">نظرات</a>
         <a href="#blogs">وبلاگ</a> --}}

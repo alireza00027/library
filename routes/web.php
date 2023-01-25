@@ -27,6 +27,7 @@ Route::get('/', [MainController::class, 'index'])->name('main');
  */
 Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () {
     Route::get('/', [UserController::class, 'index'])->name('user.panel');
+    Route::post('/{user}/update', [UserController::class, 'update'])->name('user.update');
 });
 
 /**
