@@ -35,171 +35,29 @@
 
 <section class="featured" id="featured">
 
-    <h1 class="heading"> <span>کتابهای برجسته</span> </h1>
+    <h1 class="heading"> <span>جدید ترین ها</span> </h1>
 
     <div class="swiper featured-slider">
 
         <div class="swiper-wrapper">
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
+            @foreach ($latestBooks as $book)
+                <div class="swiper-slide box">
+                    <div class="icons">
+                        <a href="{{route('books.show',['book'=>$book->id])}}" class="fas fa-eye"></a>
+                        <a href="{{route('books.download',['book'=>$book->id])}}" class="fas fa-download"></a>
+                    </div>
+                    <div class="image">
+                        <img src="{{asset($book->image)}}" alt="">
+                    </div>
+                    <div class="content">
+                        <h4>{{$book->title}}</h4>
+                        <p>{{$book->writer}}</p>
+                        <p>{{$book->release_date}}</p>
+                        <a href="{{route('books.reserve',['book'=>$book->id])}}" class="BTN">رزرو</a>
+                    </div>
                 </div>
-                <div class="image">
-                    <img src="image/book-1.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-2.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-3.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-4.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-5.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-6.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-7.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-8.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-9.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
-
-            <div class="swiper-slide box">
-                <div class="icons">
-                    <a href="#" class="fas fa-search"></a>
-                    <a href="#" class="fas fa-heart"></a>
-                    <a href="#" class="fas fa-eye"></a>
-                </div>
-                <div class="image">
-                    <img src="image/book-10.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>کتاب برجسته</h3>
-                    <div class="price">5 هزار تومان <span>10 هزارتومان</span></div>
-                    <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
-                </div>
-            </div>
+            @endforeach
+            
 
         </div>
 
@@ -214,197 +72,33 @@
 
 <!-- arrivals section starts  -->
 
+@foreach ($selectedCategories as $key=>$category)
 <section class="arrivals" id="arrivals">
 
-    <h1 class="heading"> <span>کتابهای جدید</span> </h1>
+    <h1 class="heading"> <span>{{$key}}</span> </h1>
 
     <div class="swiper arrivals-slider">
 
         <div class="swiper-wrapper">
 
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-1.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+            @foreach ($category as $book)
+                <a href="{{route('books.show',['book'=>$book->id])}}" class="swiper-slide box">
+                    <div class="image">
+                        <img src="{{asset($book->getImage())}}" alt="">
                     </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-2.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                    <div class="content">
+                        <h3>{{$book->title}}</h3>
+                        <span class="text-danger">نام نویسنده:</span><span class="text-dark"> {{$book->writer}} </span>
+                        <br>
+                        <span class="text-danger">سال انتشار:</span><span class="text-dark"> {{$book->release_date}} </span>
                     </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-3.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-4.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-5.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
+                </a>
+            @endforeach
         </div>
 
     </div>
-
-    <div class="swiper arrivals-slider">
-
-        <div class="swiper-wrapper">
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-6.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-7.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-8.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-9.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#" class="swiper-slide box">
-                <div class="image">
-                    <img src="image/book-10.png" alt="">
-                </div>
-                <div class="content">
-                    <h3>تازه رسیده ها</h3>
-                    <div class="price">5 هزارتومان <span>10 هزارتومان</span></div>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </a>
-
-        </div>
-
-    </div>
-
 </section>
+@endforeach
 
 <!-- arrivals section ends -->
     

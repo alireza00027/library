@@ -23,8 +23,12 @@
 <!-- header section starts  -->
 
 <header class="header">
+    @php
+    use App\Models\Category;
+        $categories=Category::all();
+    @endphp
 
-    @include('layouts.section.header')
+    @include('layouts.section.header',['categories'=>$categories])
 
 </header>
 

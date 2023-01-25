@@ -19,9 +19,12 @@
 <div class="header-2">
     <nav class="navbar">
         <a href="#home">خانه</a>
+        @foreach ($categories as $ca)
+        <a href="{{route('books.list',['category'=>$ca->id])}}">{{$ca->title}}</a>
+        @endforeach
         <a href="{{route('books.add')}}">افزودن کتاب</a>
-        <a href="#arrivals">جدیدها</a>
+        {{-- <a href="#arrivals">جدیدها</a>
         <a href="#reviews">نظرات</a>
-        <a href="#blogs">وبلاگ</a>
+        <a href="#blogs">وبلاگ</a> --}}
     </nav>
 </div>
