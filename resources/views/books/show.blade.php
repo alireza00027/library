@@ -31,7 +31,11 @@
 
         </div>
         <div class="col-md-3 border shadow mb-3 d-flex flex-column align-items-center py-5">
-            <a href="#" class="BTN">اضافه کردن به سبد خرید</a>
+            @if ($reserve)
+                <a href="{{route('books.download',['book'=>$book->id])}}" class="BTN">دانلود فایل</a>
+            @else
+                <a href="{{route('books.reserve',['book'=>$book->id])}}" class="BTN">رزرو</a>
+            @endif
         </div>
     </div>
 </div>

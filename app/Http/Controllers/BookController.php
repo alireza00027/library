@@ -6,6 +6,7 @@ use App\Http\Requests\AddBookRequest;
 use App\Http\Requests\EditBookRequest;
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -22,9 +23,13 @@ class BookController extends Controller {
      * book single page
      */
     public function show(Book $book) {
+        $reserve = false;
+        if (auth()->check()) {
+            $reserve = Reservation::where('book_id', $book->id)->where('user_id', auth()->user()->id)->exists();
+        }
         $book->image = $book->getImage();
         $book->categoryTitle = $book->getCategoryTitle();
-        return view('books.show', compact('book'));
+        return view('books.show', compact('book', 'reserve'));
     }
 
     /**
@@ -65,9 +70,13 @@ class BookController extends Controller {
      * edit book page
      */
     public function edit(Book $book) {
-        $categories = Category::all();
-        $book->image = $book->getImage();
-        return view('books.edit', compact('book', 'categories'));
+        if ($book->user_id == auth()->user()->id) {
+            $categories = Category::all();
+            $book->image = $book->getImage();
+            return view('books.edit', compact('book', 'categories'));
+        } else {
+            return back()->with('error', 'شما دسترسی به این بخش را ندارید');
+        }
     }
 
     /**
@@ -108,6 +117,27 @@ class BookController extends Controller {
         if ($user->reservations()->where('book_id', $book->id)->exists()) {
         } else {
             return back()->with('error', 'درصورت عدم رزرو این کتاب قادر به دانلود نیستید');
+        }
+    }
+
+    /**
+     * reserve a book
+     */
+    public function reserve(Book $book) {
+        if (Reservation::where('user_id', auth()->user()->id)->where('book_id', $book->id)->exists()) {
+            return back()->with('error', 'شما این کتاب زا از قبل رزرو کرده اید،به پنا خود مراجعه کنید');
+        }
+
+        $reserve = new Reservation();
+        $reserve->user_id = auth()->user()->id;
+        $reserve->book_id = $book->id;
+        $reserve->file = $book->file;
+        $reserve->start_reserve = now();
+        $reserve->save();
+        if ($reserve) {
+            return redirect()->route('user.panel')->with('success', 'کتاب با موفقیت رزرو شد');
+        } else {
+            return back()->with('error', 'مشکلی رخ داده است');
         }
     }
 }
