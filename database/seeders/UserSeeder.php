@@ -2,16 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Book;
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
-class BookSeeder extends Seeder {
+class UserSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
     public function run() {
-        \App\Models\Book::factory(100)->create();
+        \App\Models\User::factory(10)->create();
     }
 }

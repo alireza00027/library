@@ -10,6 +10,8 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
+
 
 class BookController extends Controller {
     /**
@@ -26,6 +28,7 @@ class BookController extends Controller {
     public function show(Book $book) {
         $reserve = false;
         if (auth()->check()) {
+            $reserve = (auth()->user()->id == $book->id) ? true : true;
             $reserve = Reservation::where('book_id', $book->id)->where('user_id', auth()->user()->id)->exists();
         }
         $book->image = $book->getImage();
@@ -60,7 +63,7 @@ class BookController extends Controller {
         if ($request->hasFile('book_file')) {
             $bookFile = $request->file('book_file');
             $bookFileName = time() . $bookFile->getClientOriginalName();
-            $bookFile->move(public_path("books/files"));
+            $bookFile->move("books/files/", $bookFileName);
             $book->file = $bookFileName;
         }
         $book->save();
@@ -89,8 +92,8 @@ class BookController extends Controller {
         $book->writer = $request->writer;
         $book->release_date = $request->release_date;
         if ($request->hasFile('img')) {
-            if (Storage::exists(public_path("books/images/{$book->img}"))) {
-                Storage::delete(public_path("books/images/{$book->img}"));
+            if (File::exists(public_path("books/images/{$book->img}"))) {
+                File::delete(public_path("books/images/{$book->img}"));
             }
             $bookImg = $request->file('img');
             $bookImgName = time() . $bookImg->getClientOriginalName();
@@ -98,12 +101,12 @@ class BookController extends Controller {
             $book->img = $bookImgName;
         }
         if ($request->hasFile('book_file')) {
-            if (Storage::exists(public_path("books/files/{$book->file}"))) {
-                Storage::delete(public_path("books/files/{$book->file}"));
+            if (File::exists(public_path("books/files/{$book->file}"))) {
+                File::delete(public_path("books/files/{$book->file}"));
             }
             $bookFile = $request->file('book_file');
             $bookFileName = time() . $bookFile->getClientOriginalName();
-            $bookFile->move(public_path("books/files"));
+            $bookFile->move("books/files/", $bookFileName);
             $book->file = $bookFileName;
         }
         $book->update();
@@ -114,10 +117,15 @@ class BookController extends Controller {
      * download book
      */
     public function download(Book $book) {
-        $user = auth()->user();
-        if ($user->reservations()->where('book_id', $book->id)->exists()) {
+        if (auth()->check()) {
+            $user = auth()->user();
+            if ($user->reservations()->where('book_id', $book->id)->exists() or $book->user_id == $user->id) {
+                return response()->download(public_path("books/files/{$book->file}"));
+            } else {
+                return back()->with('error', 'درصورت عدم رزرو این کتاب قادر به دانلود نیستید');
+            }
         } else {
-            return back()->with('error', 'درصورت عدم رزرو این کتاب قادر به دانلود نیستید');
+            return back()->with('error', 'لطفا ابتدا وارد سایت شوید');
         }
     }
 
@@ -125,20 +133,26 @@ class BookController extends Controller {
      * reserve a book
      */
     public function reserve(Book $book) {
-        if (Reservation::where('user_id', auth()->user()->id)->where('book_id', $book->id)->exists()) {
-            return back()->with('error', 'شما این کتاب زا از قبل رزرو کرده اید،به پنا خود مراجعه کنید');
-        }
-
-        $reserve = new Reservation();
-        $reserve->user_id = auth()->user()->id;
-        $reserve->book_id = $book->id;
-        $reserve->file = $book->file;
-        $reserve->start_reserve = now();
-        $reserve->save();
-        if ($reserve) {
-            return redirect()->route('user.panel')->with('success', 'کتاب با موفقیت رزرو شد');
+        if (auth()->check()) {
+            if (Reservation::where('user_id', auth()->user()->id)->where('book_id', $book->id)->exists()) {
+                return back()->with('error', 'شما این کتاب زا از قبل رزرو کرده اید،به پنا خود مراجعه کنید');
+            }
+            if ($book->user_id == auth()->user()->id) {
+                return back()->with('error', 'شما کتابی را که خودتان ثبت کرده اید را نمتوانید رزرو کنید');
+            }
+            $reserve = new Reservation();
+            $reserve->user_id = auth()->user()->id;
+            $reserve->book_id = $book->id;
+            $reserve->file = $book->file;
+            $reserve->start_reserve = now();
+            $reserve->save();
+            if ($reserve) {
+                return redirect()->route('user.panel')->with('success', 'کتاب با موفقیت رزرو شد');
+            } else {
+                return back()->with('error', 'مشکلی رخ داده است');
+            }
         } else {
-            return back()->with('error', 'مشکلی رخ داده است');
+            return back()->with('error', 'لطفا ابتدا وارد سایت شوید');
         }
     }
 }
