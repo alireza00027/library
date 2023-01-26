@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [MainController::class, 'index'])->name('main');
+Route::get('/books-list', [MainController::class, 'books'])->name('books');
 
 /**
  * userpanel

@@ -2,7 +2,7 @@
 
 <section class="footer container">
 
-    <div class="box-container">
+    {{-- <div class="box-container">
 
         <div class="box">
             <h3>دیگر شعبه ها</h3>
@@ -40,7 +40,7 @@
             <img src="image/worldmap.png" class="map" alt="">
         </div>
         
-    </div>
+    </div> --}}
 
     <div class="share">
         <a href="#" class="fab fa-facebook-f"></a>
@@ -50,7 +50,7 @@
         <a href="#" class="fab fa-pinterest"></a>
     </div>
 
-    <div class="credit"> فارسی و راست چین شده توسط <a href="https://rtl-html.ir"><span>اچ تی ام ال فارسی</span></a> </div>
+    <div class="credit"> طراح خانم ابولی </div>
 
 </section>
 

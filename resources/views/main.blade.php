@@ -10,7 +10,7 @@
         <div class="content">
             <h3>کتاب بازی</h3>
             <p>شما در کتاب بازی میتوانید کتاب های خود که بصورت فایل هستند را با بقیه به اشتراک بگذارید و از کتاب های بقیه نیز استفاده کنید</p>
-            <a href="#" class="BTN">اکنون رزرو کنید</a>
+            <a href="{{route('books')}}" class="BTN">اکنون رزرو کنید</a>
         </div>
 
         <div class="swiper books-slider">
@@ -18,9 +18,6 @@
                 <a href="#" class="swiper-slide"><img src="image/book-1.png" alt=""></a>
                 <a href="#" class="swiper-slide"><img src="image/book-2.png" alt=""></a>
                 <a href="#" class="swiper-slide"><img src="image/book-3.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-4.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-5.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="image/book-6.png" alt=""></a>
             </div>
             <img src="image/stand.png" class="stand" alt="">
         </div>
@@ -91,6 +88,8 @@
                         <span class="text-danger">نام نویسنده:</span><span class="text-dark"> {{$book->writer}} </span>
                         <br>
                         <span class="text-danger">سال انتشار:</span><span class="text-dark"> {{$book->release_date}} </span>
+                        {{-- <a href="{{route('books.show',['book'=>$book->id])}}" class="fas fa-eye"></a>
+                        <a href="{{route('books.download',['book'=>$book->id])}}" class="fas fa-download"></a> --}}
                     </div>
                 </a>
             @endforeach
@@ -103,3 +102,4 @@
 <!-- arrivals section ends -->
     
 @endsection
+

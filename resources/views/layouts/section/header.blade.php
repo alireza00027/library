@@ -2,8 +2,8 @@
 
     <a href="#" class="logo"> <i class="fas fa-book"></i> کتابخانه </a>
 
-    <form action="" class="search-form">
-        <input type="search" name="" placeholder="جستجو کنید" id="search-box">
+    <form action="{{route('books')}}" class="search-form">
+        <input type="search" name="searchBook" placeholder="جستجو کنید" id="search-box">
         <label for="search-box" class="fas fa-search"></label>
     </form>
 
@@ -25,7 +25,8 @@
 
 <div class="header-2">
     <nav class="navbar">
-        <a href="#home">خانه</a>
+        <a href="{{route('main')}}">خانه</a>
+        <a href="{{route('books')}}">لیست کتاب ها</a>
         @foreach ($categories as $ca)
         <a href="{{route('books.list',['category'=>$ca->id])}}">{{$ca->title}}</a>
         @endforeach

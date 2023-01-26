@@ -28,4 +28,18 @@ class MainController extends Controller {
         }
         return view('main', compact('latestBooks', 'selectedCategories'));
     }
+
+    /**
+     * book list page
+     */
+    public function books() {
+        $books = new Book();
+        if ($search = request('searchBook')) {
+            $books = $books->where('title', 'LIKE', '%' . $search . '%')
+                ->orWhere('writer', 'LIKE', '%' . $search . '%');
+        }
+        $books = $books->orderBy('created_at')->get();
+
+        return view('books', compact('books'));
+    }
 }
