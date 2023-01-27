@@ -18,7 +18,7 @@ class BookController extends Controller {
      * list of books by category
      */
     public function list(Category $category) {
-        $books = Book::where('category_id', $category->id)->orderBy('updated_at', 'DESC')->get();
+        $books = Book::where('category_id', $category->id)->orderBy('updated_at', 'DESC')->paginate(12);
         return view('books.list', compact('category', 'books'));
     }
 

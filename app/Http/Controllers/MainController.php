@@ -11,6 +11,7 @@ class MainController extends Controller {
      * main page
      */
     public function index() {
+        
 
         $categories = Category::all();
         $categoryIds = $categories->pluck(['id'])->toArray();
@@ -38,7 +39,7 @@ class MainController extends Controller {
             $books = $books->where('title', 'LIKE', '%' . $search . '%')
                 ->orWhere('writer', 'LIKE', '%' . $search . '%');
         }
-        $books = $books->orderBy('created_at')->get();
+        $books = $books->orderBy('created_at')->paginate(12);
 
         return view('books', compact('books'));
     }
