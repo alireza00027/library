@@ -42,7 +42,7 @@
     
             </div>
             <div class="col-md-3 border shadow mb-3 d-flex flex-column py-5">
-                    <input type="text" value="{{$book->file}}">
+                <img src="{{asset('image/blog-2.jpg')}}" alt="" class="w-100">
                     <label for="file-upload1" class="w-100">
                         <input name="book_file" type="file" id="file-upload1" />
                         <span class="BTN w-100 text-center">آپلود فایل کتاب</span>

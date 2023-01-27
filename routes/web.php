@@ -37,7 +37,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () 
 Route::prefix('books')->group(function () {
     Route::get('/{category}', [BookController::class, 'list'])->name('books.list');
     Route::get('/{book}/reserve', [BookController::class, 'reserve'])->name('books.reserve');
-    Route::get('books/{book}/show', [BookController::class, 'show'])->name('books.show');
+    Route::get('{book}/show', [BookController::class, 'show'])->name('books.show');
 
     Route::post('/store', [BookController::class, 'store'])->name('books.store')->middleware(['web', 'auth']);
     Route::get('/{book}/edit', [BookController::class, 'edit'])->name('books.edit')->middleware(['web', 'auth']);
