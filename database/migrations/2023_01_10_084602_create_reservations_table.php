@@ -16,8 +16,6 @@ class CreateReservationsTable extends Migration {
             $table->integer('user_id')->unsigned();
             $table->integer('book_id')->unsigned();
             $table->string('file')->nullable();
-            $table->timestamp('start_reserve')->nullable();
-            $table->timestamp('end_reserve')->nullable();
             $table->timestamps();
         });
     }
