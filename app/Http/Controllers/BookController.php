@@ -144,7 +144,6 @@ class BookController extends Controller {
             $reserve->user_id = auth()->user()->id;
             $reserve->book_id = $book->id;
             $reserve->file = $book->file;
-            $reserve->start_reserve = now();
             $reserve->save();
             if ($reserve) {
                 return redirect()->route('user.panel')->with('success', 'کتاب با موفقیت رزرو شد');
