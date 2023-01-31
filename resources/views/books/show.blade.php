@@ -9,7 +9,11 @@
         <div class="col-md-3 mb-3 d-flex flex-column align-items-center py-5">
                 <img src="{{asset($book->image)}}" alt="" class="w-100">  
                 <div class="w-100">
-                    <a href="{{route('books.reserve',['book'=>$book->id])}}" class="BTN w-100 text-center">رزرو</a>
+                    @if ($reserve)
+                        <a href="{{route('books.download',['book'=>$book->id])}}" class="BTN w-100 text-center">دانلود فایل</a>
+                    @else
+                        <a href="{{route('books.reserve',['book'=>$book->id])}}" class="BTN w-100 text-center">رزرو</a>
+                    @endif
                 </div>                                  
         </div>
         <div class="col-md-9 mb-3">

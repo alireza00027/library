@@ -28,8 +28,8 @@ class BookController extends Controller {
     public function show(Book $book) {
         $reserve = false;
         if (auth()->check()) {
-            $reserve = (auth()->user()->id == $book->id) ? true : true;
-            $reserve = Reservation::where('book_id', $book->id)->where('user_id', auth()->user()->id)->exists();
+            $reserveCheck = Reservation::where('book_id', $book->id)->where('user_id', auth()->user()->id)->exists();
+            $reserve = (auth()->user()->id == $book->id) ? true : $reserveCheck;
         }
         $book->image = $book->getImage();
         $book->categoryTitle = $book->getCategoryTitle();
@@ -135,7 +135,7 @@ class BookController extends Controller {
     public function reserve(Book $book) {
         if (auth()->check()) {
             if (Reservation::where('user_id', auth()->user()->id)->where('book_id', $book->id)->exists()) {
-                return back()->with('error', 'شما این کتاب زا از قبل رزرو کرده اید،به پنا خود مراجعه کنید');
+                return back()->with('error', 'شما این کتاب زا از قبل رزرو کرده اید،به پنل خود مراجعه کنید');
             }
             if ($book->user_id == auth()->user()->id) {
                 return back()->with('error', 'شما کتابی را که خودتان ثبت کرده اید را نمتوانید رزرو کنید');
@@ -144,7 +144,6 @@ class BookController extends Controller {
             $reserve->user_id = auth()->user()->id;
             $reserve->book_id = $book->id;
             $reserve->file = $book->file;
-            $reserve->start_reserve = now();
             $reserve->save();
             if ($reserve) {
                 return redirect()->route('user.panel')->with('success', 'کتاب با موفقیت رزرو شد');
