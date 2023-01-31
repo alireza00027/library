@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller {
     /**
-     * user panel page
+     * صفحه پنل کاربری کاربر
      */
     public function index() {
         $user = auth()->user();
@@ -27,7 +27,7 @@ class UserController extends Controller {
     }
 
     /**
-     * update personal information of user
+     * عملیات ویرایش اطلاعات کاربری
      */
     public function update(Request $request, User $user) {
 

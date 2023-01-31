@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\File;
 
 class BookController extends Controller {
     /**
-     * list of books by category
+     * گرفتن اطلاعات لازم برای نمایش کتاب های یک دسته بندی
      */
     public function list(Category $category) {
         $books = Book::where('category_id', $category->id)->orderBy('updated_at', 'DESC')->paginate(12);
@@ -23,7 +23,7 @@ class BookController extends Controller {
     }
 
     /**
-     * book single page
+     * صفحه نمایش کتاب
      */
     public function show(Book $book) {
         $reserve = false;
@@ -37,7 +37,7 @@ class BookController extends Controller {
     }
 
     /**
-     * create book page
+     * صفحه ایجاد کتاب
      */
     public function create() {
         $categories = Category::all();
@@ -45,7 +45,7 @@ class BookController extends Controller {
     }
 
     /**
-     * store book process
+     * عملیات ذخیره سازی کتاب
      */
     public function store(AddBookRequest $request) {
         $book = new Book();
@@ -71,7 +71,7 @@ class BookController extends Controller {
     }
 
     /**
-     * edit book page
+     * صفحه ویرایش کتاب
      */
     public function edit(Book $book) {
         if ($book->user_id == auth()->user()->id) {
@@ -84,7 +84,7 @@ class BookController extends Controller {
     }
 
     /**
-     * update Book process
+     * عملیات ویرایش کتاب
      */
     public function update(EditBookRequest $request, Book $book) {
         $book->category_id = $request->category_id;
@@ -114,7 +114,7 @@ class BookController extends Controller {
     }
 
     /**
-     * download book
+     * عملیات دانلود کتاب
      */
     public function download(Book $book) {
         if (auth()->check()) {
@@ -130,7 +130,7 @@ class BookController extends Controller {
     }
 
     /**
-     * reserve a book
+     * عملیات رزرو کتاب
      */
     public function reserve(Book $book) {
         if (auth()->check()) {

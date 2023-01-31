@@ -17,14 +17,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+// روت های مربوط به ثبت نام و ورود و فراموشی رمز عبور
 Auth::routes();
 
+/**روت صفحه اصلی */
 Route::get('/', [MainController::class, 'index'])->name('main');
+/**
+ * روت لیست کتاب ها
+ */
 Route::get('/books-list', [MainController::class, 'books'])->name('books');
 
 /**
- * userpanel
+ * روت های مربوط به کاربر شامل نمایش پنل و ویرایش اطلاعات کاربر
  */
 Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () {
     Route::get('/', [UserController::class, 'index'])->name('user.panel');
@@ -32,7 +36,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () 
 });
 
 /**
- * books routes
+ * روت های مربوط به کتاب ها
  */
 Route::prefix('books')->group(function () {
     Route::get('/{category}', [BookController::class, 'list'])->name('books.list');

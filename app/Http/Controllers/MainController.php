@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller {
     /**
-     * main page
+     * صفحه اصلی
      */
     public function index() {
-        
+
 
         $categories = Category::all();
         $categoryIds = $categories->pluck(['id'])->toArray();
@@ -31,7 +31,7 @@ class MainController extends Controller {
     }
 
     /**
-     * book list page
+     * صفحه لیست کتاب ها
      */
     public function books() {
         $books = new Book();
